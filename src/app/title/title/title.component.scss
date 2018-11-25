@@ -1,0 +1,153 @@
+$side: 60px;
+$color: cyan;
+$side2: 180px;
+$color2: powderblue;
+@mixin plane($w, $h) {
+    width: $w;
+    height: $h;
+    transform-style: preserve-3d;
+}
+
+@mixin view($p) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    perspective: $p;
+}
+
+@mixin center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.view {
+    @include view(400);
+}
+
+.plane {
+    @include plane($side, $side);
+    &.main {
+        @include center;
+        transform: rotateX(60deg) rotateZ(-30deg);
+        animation: rotate 60s infinite linear;
+        .circle {
+            width: $side;
+            height: $side;
+            position: absolute;
+            transform-style: preserve-3d;
+            border-radius: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 0 30px rgba($color, 1), inset 0 0 100px rgba(aliceblue, 1);
+            @for $i from 1 through 8 {
+                &:nth-child(#{$i}) {
+                    transform: rotateZ($i / 8 * 360deg) rotateX(63.435deg);
+                }
+            }
+        }
+    }
+}
+
+.plane2 {
+    @include plane($side2, $side2);
+    &.main {
+        @include center;
+        transform: rotateX(60deg) rotateZ(-30deg);
+        animation: rotate 10s infinite linear;
+        cursor: pointer;
+        &:hover {
+            .circle {
+                box-shadow: 0 0 30px rgba($color, 1), inset 0 0 10px rgba(aliceblue, 1);
+            }
+        }
+        .circle {
+            width: $side2;
+            height: $side2;
+            position: absolute;
+            transform-style: preserve-3d;
+            border-radius: 100%;
+            border: 12px double $color2;
+            box-sizing: border-box;
+            @for $i from 1 through 6 {
+                &:nth-child(#{$i}) {
+                    transform: rotateZ($i / 6 * 360deg) rotateX(63.435deg);
+                }
+            }
+        }
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateX(0) rotateY(0) rotateZ(0);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+
+@mixin side {
+    position: absolute;
+    top: 0;
+    >ul {
+        >li {
+            color: white;
+            width: 30vw;
+            margin: 40px 0;
+            padding: 10px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid $color2;
+            box-shadow: 0 0 10px rgba($color, 1), inset 0 0 10px rgba(aliceblue, 1);
+            overflow: hidden;
+            cursor: pointer;
+            @for $i from 1 through 6 {
+                &:nth-child(#{$i}) {
+                    transition: all 250ms cubic-bezier(0, 0, 0.2, 1) (10ms * $i);
+                }
+            }
+        }
+    }
+}
+
+.sidemenu {
+    @include side;
+    left: 0;
+    >ul {
+        >li {
+            margin-left: calc(-30vw - 10px);
+            border-radius: 0 50px 50px 0 / 0 50% 50% 0;
+        }
+    }
+    &.show {
+        >ul>li {
+            transform: translateX(calc(30vw - 15px));
+            &:hover {
+                transform: translateX(calc(30vw - 5px));
+            }
+        }
+    }
+}
+
+.sidemenu2 {
+    @include side;
+    right: 0;
+    >ul {
+        >li {
+            margin-right: calc(-30vw - 10px);
+            border-radius: 50px 0 0 50px / 50% 0 0 50%;
+        }
+    }
+    &.show {
+        >ul>li {
+            transform: translateX(calc(-30vw + 15px));
+            &:hover {
+                transform: translateX(calc(-30vw + 5px));
+            }
+        }
+    }
+}

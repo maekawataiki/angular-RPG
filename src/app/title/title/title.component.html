@@ -1,0 +1,56 @@
+<div class="view">
+  <div class="plane main">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+  <div class="plane2 main" (click)="toggleMenu()">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+</div>
+
+<nav class="sidemenu" [ngClass]="{ 'show': showmenu }">
+  <ul>
+    <li (click)="toggleOption(1)">Attack</li>
+    <li (click)="toggleOption(2)">Magic</li>
+    <li (click)="toggleOption(3)">Item</li>
+    <li>Guard</li>
+    <li>Sleep</li>
+    <li>Escape</li>
+  </ul>
+</nav>
+
+<nav class="sidemenu2" [ngClass]="{ 'show': option === 1 }">
+  <ul>
+    <li>Sword</li>
+    <li>Katana</li>
+    <li>Sword</li>
+    <li>Katana</li>
+    <li>Sword</li>
+    <li>Katana</li>
+  </ul>
+</nav>
+
+<nav class="sidemenu2" [ngClass]="{ 'show': option === 2 }">
+  <ul>
+    <li>Fire</li>
+    <li>Wind</li>
+  </ul>
+</nav>
+
+<nav class="sidemenu2" [ngClass]="{ 'show': option === 3 }">
+  <ul>
+    <li>Portion</li>
+    <li>Monster Ball</li>
+  </ul>
+</nav>
