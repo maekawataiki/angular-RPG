@@ -108,6 +108,7 @@ $color2: powderblue;
     position: absolute;
     top: 0;
     overflow: hidden;
+    width: 30vw;
     >ul {
         >li {
             color: white;
@@ -133,7 +134,7 @@ $color2: powderblue;
     left: 0;
     >ul {
         >li {
-            margin-left: calc(-30vw);
+            margin-left: -30vw;
             transform: translateX(-15px);
             border-radius: 0 50px 50px 0 / 0 50% 50% 0;
         }
@@ -153,7 +154,7 @@ $color2: powderblue;
     right: 0;
     >ul {
         >li {
-            margin-right: calc(-30vw);
+            margin-left: 30vw;
             transform: translateX(15px);
             border-radius: 50px 0 0 50px / 50% 0 0 50%;
         }
