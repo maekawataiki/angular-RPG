@@ -24,33 +24,34 @@
     <li (click)="toggleOption(1)">Attack</li>
     <li (click)="toggleOption(2)">Magic</li>
     <li (click)="toggleOption(3)">Item</li>
-    <li>Guard</li>
-    <li>Sleep</li>
-    <li>Escape</li>
+    <li (click)="guard('Guard')">Guard</li>
+    <li (click)="sleep('Sleep')">Sleep</li>
+    <li (click)="escape('Escape')">Escape</li>
   </ul>
 </nav>
 
 <nav class="sidemenu2" [ngClass]="{ 'show': option === 1 }">
   <ul>
-    <li>Sword</li>
-    <li>Katana</li>
-    <li>Sword</li>
-    <li>Katana</li>
-    <li>Sword</li>
-    <li>Katana</li>
+    <li (click)="attack('Sword')">Sword</li>
+    <li (click)="attack('Katana')">Katana</li>
   </ul>
 </nav>
 
 <nav class="sidemenu2" [ngClass]="{ 'show': option === 2 }">
   <ul>
-    <li>Fire</li>
-    <li>Wind</li>
+    <li (click)="magic('Fire')">Fire</li>
+    <li (click)="magic('Wind')">Wind</li>
+    <li (click)="magic('Ice')">Ice</li>
   </ul>
 </nav>
 
 <nav class="sidemenu2" [ngClass]="{ 'show': option === 3 }">
   <ul>
-    <li>Portion</li>
-    <li>Monster Ball</li>
+    <li (click)="item('Portion')">Portion</li>
+    <li (click)="item('Monster Ball')">Monster Ball</li>
   </ul>
 </nav>
+
+<div #scrollMe class="message" [ngClass]="{ 'show': text !== '' }">
+  {{ text }}
+</div>

@@ -1,0 +1,20 @@
+
+#!/bin/bash
+
+echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
+
+ng build --prod --output-path docs --base-href https://maekawataiki.github.io/angular-RPG/
+cp docs/index.html docs/404.html
+touch docs/.nojekyll
+
+git add -A
+
+# Commit changes.
+msg="minor change"
+if [ $# -eq 1 ]
+  then msg="$1"
+fi
+git commit -m "$msg"
+
+#Push source and build repos.
+git push origin master

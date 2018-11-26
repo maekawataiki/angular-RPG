@@ -13,7 +13,7 @@ $color2: powderblue;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 20vh;
     perspective: $p;
 }
 
@@ -28,6 +28,7 @@ $color2: powderblue;
 
 .view {
     @include view(400);
+    animation: hover 3s infinite ease-in-out;
 }
 
 .plane {
@@ -91,6 +92,18 @@ $color2: powderblue;
     }
 }
 
+@keyframes hover {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(30px)
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 @mixin side {
     position: absolute;
     top: 0;
@@ -98,7 +111,7 @@ $color2: powderblue;
         >li {
             color: white;
             width: 30vw;
-            margin: 40px 0;
+            margin: 3vh 0;
             padding: 10px 30px;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid $color2;
@@ -119,7 +132,8 @@ $color2: powderblue;
     left: 0;
     >ul {
         >li {
-            margin-left: calc(-30vw - 10px);
+            margin-left: calc(-30vw);
+            transform: translateX(-15px);
             border-radius: 0 50px 50px 0 / 0 50% 50% 0;
         }
     }
@@ -138,7 +152,8 @@ $color2: powderblue;
     right: 0;
     >ul {
         >li {
-            margin-right: calc(-30vw - 10px);
+            margin-right: calc(-30vw);
+            transform: translateX(15px);
             border-radius: 50px 0 0 50px / 50% 0 0 50%;
         }
     }
@@ -149,5 +164,25 @@ $color2: powderblue;
                 transform: translateX(calc(-30vw + 5px));
             }
         }
+    }
+}
+
+.message {
+    display: none;
+    white-space: pre-line;
+    overflow-y: scroll;
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 20px);
+    height: 20%;
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid $color2;
+    box-shadow: 0 0 10px rgba($color, 1), inset 0 0 10px rgba(aliceblue, 1);
+    &.show {
+        display: block;
     }
 }
