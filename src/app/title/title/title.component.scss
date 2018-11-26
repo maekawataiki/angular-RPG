@@ -107,6 +107,7 @@ $color2: powderblue;
 @mixin side {
     position: absolute;
     top: 0;
+    overflow: hidden;
     >ul {
         >li {
             color: white;
